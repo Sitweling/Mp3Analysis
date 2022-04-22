@@ -56,6 +56,14 @@
             <version>3.0.1</version>
         </dependency>
 
+        <!--json-->
+        <dependency>
+            <groupId>top.jfunc.json</groupId>
+            <artifactId>Json-Fastjson</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

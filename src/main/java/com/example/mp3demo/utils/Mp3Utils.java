@@ -1,8 +1,11 @@
 package com.example.mp3demo.utils;
 
+import com.alibaba.fastjson.JSON;
+import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
+import org.jaudiotagger.audio.flac.FlacFileReader;
 import org.jaudiotagger.audio.mp3.MP3File;
 import org.jaudiotagger.audio.mp3.MP3FileReader;
 import org.jaudiotagger.tag.Tag;
@@ -12,16 +15,21 @@ import org.jaudiotagger.tag.id3.AbstractID3v2Frame;
 import org.jaudiotagger.tag.id3.AbstractID3v2Tag;
 import org.jaudiotagger.tag.id3.framebody.FrameBodyAPIC;
 import org.jaudiotagger.tag.images.Artwork;
+import sun.misc.BASE64Encoder;
 import sun.rmi.runtime.Log;
+import top.jfunc.json.Json;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Base64;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: 这个类用于处理mp3歌曲的信息
  * @Author: Sitweling
  * @CreateTime: 2022/4/21
  */
@@ -46,6 +54,7 @@ public class Mp3Utils {
             FileOutputStream fos = new FileOutputStream("D:\\Demo_code\\mp3Demo\\src\\main\\resources\\image\\image1.png");
             fos.write(binaryData);
             fos.close();
+
 /*            AbstractID3v2Tag id3v2Tag = file.getID3v2Tag();
             AbstractID3v2Frame frame = (AbstractID3v2Frame)id3v2Tag.getFrame("APIC");
             FrameBodyAPIC body = (FrameBodyAPIC) frame.getBody();
